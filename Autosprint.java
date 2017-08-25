@@ -43,8 +43,6 @@ public static void ASGuiFrame()  {
 	guiPanel1.add(startButton);
 	guiPanel1.add(stopButton);
 	//startButton.setSize(100,100);
-	
-
 	stopButton.addActionListener(new EndTask());
 	startButton.addActionListener(new StartTask());
 
@@ -65,7 +63,7 @@ static class StartTask implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 
 		try {
-			sprintDeactivation();
+		sprintActivation();
 		} catch (AWTException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -83,7 +81,7 @@ static class EndTask implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		
 		try {
-			sprintActivation();
+			sprintDeactivation();
 		} catch (AWTException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
