@@ -1,5 +1,7 @@
 package megalunchbox;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 import javax.swing.*;
@@ -13,18 +15,18 @@ public static void main(String []args) {
 	ASGuiFrame();
 	
 }
-public void sprintActivation () throws AWTException{
+public static void sprintActivation () throws AWTException{
 	Robot Sprinter = new Robot();
 	Sprinter.keyPress(KeyEvent.VK_CONTROL);
 }
-public void sprintDeactivation() throws AWTException {
+public static void sprintDeactivation() throws AWTException {
 	
 	Robot Stopper = new Robot();
 	Stopper.keyRelease(KeyEvent.VK_CONTROL);
 	
 }
 
-@SuppressWarnings("unused")
+//@SuppressWarnings("unused")
 public static void ASGuiFrame()  {
 	
 	
@@ -43,6 +45,8 @@ public static void ASGuiFrame()  {
 	//startButton.setSize(100,100);
 	
 
+	stopButton.addActionListener(new EndTask());
+	startButton.addActionListener(new StartTask());
 
 	
 	
@@ -55,4 +59,44 @@ public static void ASGuiFrame()  {
 	
 }
 
+
+static class StartTask implements ActionListener{
+	
+	public void actionPerformed(ActionEvent e) {
+
+		try {
+			sprintDeactivation();
+		} catch (AWTException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		
+		
+	
+}
+
+
+static class EndTask implements ActionListener{
+
+	
+	public void actionPerformed(ActionEvent e) {
+		
+		try {
+			sprintActivation();
+		} catch (AWTException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+	
+	
+		}
+
+
+
+
+
+	}
+}
 }
